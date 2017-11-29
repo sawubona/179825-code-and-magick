@@ -33,18 +33,19 @@ const wizards = {
 };
 
 const createWizards = () => {
+    const fragment = document.createDocumentFragment();
     for (let i = 0; i < 4; i++) {
         let wizard = wizardTemplate.cloneNode(true);
         wizard.querySelector('.setup-similar-label').textContent = wizards.getRandomWizard().name;
         wizard.querySelector('.wizard-coat').style.fill = wizards.getRandomWizard().coatColor;
         wizard.querySelector('.wizard-eyes').style.fill = wizards.getRandomWizard().eyesColor;
-        wizardsList.appendChild(wizard);
+        fragment.appendChild(wizard);
     }
+    wizardsList.appendChild(fragment);
 };
 
-(() => {
-    showBlock(charactersBlock);
-    showBlock(wizardsListWrapper);
-    createWizards();
-})();
+
+showBlock(charactersBlock);
+showBlock(wizardsListWrapper);
+createWizards();
 
